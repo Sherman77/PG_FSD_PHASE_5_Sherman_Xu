@@ -1,0 +1,31 @@
+<form #answerForm="ngForm" (ngSubmit)="submit(answerForm)">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Number</th>
+                <th scope="col">Question</th>
+                <th scope="col">Answer</th>
+            </tr>
+        </thead>
+
+        <tr *ngFor="let q of questions; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{q.questionBody}}</td>
+            <td>
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input required class="form-check-input" type="radio" name="answer{{i}}" id="inlineRadio1" value="true" ngModel>
+                        <label class="form-check-label" for="inlineRadio1">True</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="answer{{i}}" id="inlineRadio2" value="false" ngModel>
+                        <label class="form-check-label" for="inlineRadio2">False</label>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+    <button class="btn btn-primary" type="submit" [disabled]="answerForm.invalid">Submit</button>
+</form>

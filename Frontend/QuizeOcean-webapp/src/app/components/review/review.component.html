@@ -1,0 +1,32 @@
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 15%;">Number</th>
+        <th scope="col">Question</th>
+        <th scope="col" style="width: 15%;">Corrcet Answer</th>
+        <th scope="col" style="width: 15%;">Your Answer</th>
+        <th scope="col" style="width: 15%;">Result</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let r of results; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{questions[i].questionBody}}</td>
+        <td>{{questions[i].questionAnswer}}</td>
+        <td>{{answers[i]}}</td>
+        <td><p *ngIf="r; then correct else wrong"></p></td>
+      </tr>
+    </tbody>
+
+    <ng-template #correct>
+        <p class="text-success">Correct</p>
+    </ng-template>
+    
+    <ng-template #wrong>
+        <p class="text-danger">Wrong</p>
+    </ng-template>
+    
+
+</table>
+
